@@ -1,1 +1,1 @@
-# Epilepsy-Extention
+# Epilepsy-Extension
