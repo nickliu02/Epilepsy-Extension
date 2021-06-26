@@ -59,7 +59,7 @@
 .content .warning {
   font-size: 26px;
   font-family: "Inter";
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 30px;
 }
 
@@ -79,10 +79,12 @@
   left: 0;
   right: 0;
   margin: auto;
+  transition: box-shadow 0.3s;
 }
 .buttons :hover {
-  opacity: 0.8;
+  opacity: 0.9;
   cursor: pointer;
+  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
 }
 
 .buttons .yes {

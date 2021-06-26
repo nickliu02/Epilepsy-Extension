@@ -22,10 +22,12 @@ object {
   color: white;
   font-family: "Inter";
   font-weight: 400;
+  transition: box-shadow 0.3s;
 }
 .vidButton:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   cursor: pointer;
+  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
 }
 
 .question {
@@ -75,10 +77,12 @@ inputField:focus {
   color: white;
   font-family: "Inter";
   font-weight: 400;
+  transition: box-shadow 0.3s;
 }
 .linkButton:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   cursor: pointer;
+  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
 }
 
 .reportSection {
