@@ -28,4 +28,3 @@ def add_timestamps(url, timestamps):
             'timestamps': timestamps
         })
 
-add_timestamps("https://www.youtube.com/watch?v=gwoQRKCEHgY&ab_channel=Awetruetoceasar", [[70, 90]])

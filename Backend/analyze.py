@@ -13,7 +13,7 @@ filename = "Backend/videos/pokemon.mp4"
 def Y_to_lux(Y):
     return 413.435 * (0.002745*Y + 0.0189623)**2.2
 
-def get_avg_diff(hist, N, p=False):
+def get_avg_diff(hist, N):
     quants = hist[0]
     vals = hist[1]
 
@@ -51,12 +51,9 @@ def get_avg_diff(hist, N, p=False):
 
     avgL = tot / count
     
-    
     return avgP if abs(avgP) > abs(avgL) else avgL
 
-
-
-def get_events(filename):
+def analyze(filename):
     fvs = FileVideoStream(filename).start()
     first = True
     prev_lux = None
@@ -122,18 +119,15 @@ def get_events(filename):
                 """
                 
                 
-
-
             prev_lux = lux
     
+    """
     plt.plot([i+1 for i in range(len(diffs))], diffs, 'ro')
     plt.plot([i+1 for i in range(len(diffs))], get_triggers(diffs), 'bo')
-    plt.axis([0, 320, -200, 200])
+    plt.axis([0, len(diffs), -200, 200])
     plt.ylabel('avg diffs')
     plt.show()
-
-    
-    
+    """
 
     """
     plt.plot([i+1 for i in range(len(diffs))], accums, 'ro')
@@ -155,9 +149,9 @@ def get_events(filename):
     plt.show()
     """
     
-    return events
+    return get_triggers(diffs)
 
-def get_triggers(diffs, fps=30, rad=10, senstivity=12, density=0.4):
+def get_triggers(diffs, rad=10, senstivity=12, density=0.4):
     queue = [diffs[i] for i in range(rad)]
     out = [0 for i in range(len(diffs))]
 
@@ -174,6 +168,7 @@ def get_triggers(diffs, fps=30, rad=10, senstivity=12, density=0.4):
             out[i] = 200
 
     i, j = 0, 0
+    pairs = []
 
     while i < len(out) - 1:
         if out[i]:
@@ -186,15 +181,19 @@ def get_triggers(diffs, fps=30, rad=10, senstivity=12, density=0.4):
             if count < 15:
                 for k in range(i, j):
                     out[k] = 0
-            
+            else:
+                pairs.append([i, j])
+
             i = j + 1
         
         else:
             i += 1
 
-    return out
+
+
+    return pairs
         
 
             
-get_events(filename)
-#pprint.pprint(get_events(filename))
+analyze(filename)
+#pprint.pprint(analyze(filename))
