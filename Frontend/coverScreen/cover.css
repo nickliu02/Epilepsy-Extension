@@ -2,25 +2,72 @@
   margin: 0;
   padding: 0;
 }
+.body {
+  background-color: rgba(249, 249, 249, 0.9);
+}
+.pauseIcon {
+  filter: invert(6%) sepia(29%) saturate(5283%) hue-rotate(209deg)
+    brightness(102%) contrast(91%);
+  margin: 8px;
+}
 .content {
-  background-color: lightsteelblue;
+  background-color: transparent;
   padding: 20px;
   text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.content .warning {
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.content .proceed {
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: #233c67;
 }
 
 .buttons {
   padding: 20px;
   display: inline-block;
   text-align: center;
-  background-color: bisque;
-  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.buttons :hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .buttons .yes {
   background-color: #99afd7;
   width: 197px;
+  height: 50px;
+  margin-right: 30px;
+  border-radius: 8px;
+  border-color: transparent;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: white;
 }
 
 .buttons .no {
   background-color: #233c67;
+  width: 197px;
+  height: 50px;
+  margin-left: 30px;
+  border-radius: 8px;
+  border-color: transparent;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: white;
 }
