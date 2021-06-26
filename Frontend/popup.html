@@ -14,34 +14,40 @@
 </head>
 
 <body>
+    <script src="popup.js" charset="utf-8"></script>
     <div class="firstButton">
-        <button class="vidButton">Scan video</button>
+        <button class="vidButton" id="vidButton" name="vidButton">Scan video</button>
     </div>
 
     <div class="formClass">
-        <p class="question">Not on YouTube?</p>
+        <p class="question">Go to video</p>
         <input class="inputField" type="text" id="link" name="link" placeholder="Insert video link here" /><br />
 
-        <div class="secondButton">
-            <button class="linkButton">Scan link</button>
-        </div>
+     <div class="secondButton">
+            <button class="linkButton"id="linkButton" >Scan link</button>
+        </div> 
     </div>
 
     <div class="footer">
-
         <div class="reportSection">
-
+            <!-- link to public google form -->
             <img src="./assets/alert-circle.svg" width="20" height="20" class="issueIcon" />
             <p class="reportText">Report an issue</p>
         </div>
-        <a href="https://github.com/nickliu02/Epilepsy-Extension">
+        <a href="https://github.com/nickliu02/Epilepsy-Extension" target="_blank">
             <img src="./assets/logo-github.svg" width="20" height="20" class="gitIcon">
         </a>
     </div>
 </body>
-
 </html>
-
 </body>
-
 </html>
+
+<!-- 
+
+    Not needed: Know the video id
+    Video frames
+    figure out how to pause and play
+    figure out how to overlay video
+ -->
+
