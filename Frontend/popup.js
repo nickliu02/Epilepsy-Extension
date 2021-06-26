@@ -5,14 +5,20 @@ document.addEventListener(
   function () {
     document
       .getElementById("vidButton")
-      .addEventListener("click", onclick, false);
+      .addEventListener("click", onClickVidButton, false);
+    document.getElementById("linkButton").addEventListener("click",)
 
-    function onclick() {
+    function onClickVidButton() {
       chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, "");
 
         //document.getElementsByName("video")[0].onpause();
       });
+    }
+    function onClickLinkButton(){
+        chrome.tabs.query({currentWindow:true,active:true},function (tabs){
+            chrome.tabs.sendMessage(tabs[0].id,document.getElementById("link").value);
+        })
     }
   },
   false

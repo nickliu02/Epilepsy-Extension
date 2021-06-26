@@ -5,6 +5,7 @@ chrome.runtime.onMessage.addListener(function (request) {
     let data = {"url": window.location.toString()};
     if (request.message){
         data = {"url":request.message}
+        chrome.tabs.create({url:request.message})
 
     }
 
