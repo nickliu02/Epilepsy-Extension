@@ -9,7 +9,8 @@ document.addEventListener(
 
     function onclick() {
       chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, "hi");
+        chrome.tabs.sendMessage(tabs[0].id, "");
+
         //document.getElementsByName("video")[0].onpause();
       });
     }
