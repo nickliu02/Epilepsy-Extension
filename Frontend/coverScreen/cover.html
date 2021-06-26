@@ -15,22 +15,33 @@
   </head>
 
   <body>
-    <img
-      src="../assets/pause-solid.svg"
-      width="40"
-      height="40"
-      class="pauseIcon"
-    />
-    <div class="content">
-      <p class="warning">
-        Warning! The following contains an epilepsy trigger.
-      </p>
-      <br />
-      <pr class="proceed">Do you want to proceed?</pr>
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Open Alert</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img
+          src="../assets/pause-solid.svg"
+          width="40"
+          height="40"
+          class="pauseIcon"
+        />
+        <div class="content">
+          <p class="warning">
+            Warning! The following contains an epilepsy trigger.
+          </p>
+          <br />
+          <pr class="proceed">Do you want to proceed?</pr>
+        </div>
+        <div class="buttons">
+          <button class="yes" id="yes">yes</button>
+          <button class="no">no</button>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-      <button class="yes">yes</button>
-      <button class="no">no</button>
-    </div>
+    <script src="cover.js" charset="utf-8"></script>
   </body>
 </html>
