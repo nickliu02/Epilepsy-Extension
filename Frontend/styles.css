@@ -1,0 +1,122 @@
+body {
+  width: 288px;
+  height: 234px;
+  background-color: #f9f9f9;
+}
+object {
+  background-color: grey;
+}
+.firstButton {
+  margin-top: 25px;
+  background-color: transparent;
+  padding: 10px;
+}
+.vidButton {
+  background-color: #6888be;
+  margin: 0 auto;
+  display: block;
+  width: 212px;
+  height: 35px;
+  border-color: transparent;
+  border-radius: 5px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 400;
+}
+.vidButton:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.question {
+  background-color: transparent;
+  margin-left: 28px;
+  margin-bottom: 8px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.formClass {
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: transparent;
+}
+.inputField {
+  height: 35px;
+  width: 206px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: #e8e8e8;
+  outline: thistle;
+}
+
+inputField:focus {
+  outline: none;
+}
+.secondButton {
+  background-color: transparent;
+  margin-top: -8px;
+  margin-bottom: 40px;
+}
+
+.linkButton {
+  background-color: #99afd7;
+  margin: 0 auto;
+  display: block;
+  width: 212px;
+  height: 35px;
+  border-color: transparent;
+  border-radius: 5px;
+  color: white;
+  font-family: "Inter";
+  font-weight: 400;
+}
+.linkButton:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.reportSection {
+  display: inline-block;
+  background-color: transparent;
+}
+
+.issueIcon {
+  margin-top: 10px;
+  float: left;
+  filter: invert(57%) sepia(0%) saturate(474%) hue-rotate(139deg)
+    brightness(98%) contrast(91%);
+}
+.issueIcon:hover {
+  cursor: pointer;
+}
+.reportText {
+  padding-left: 10px;
+  float: right;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 13px;
+}
+.reportText:hover {
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%;
+  display: inline-block;
+  background-color: transparent;
+  z-index: 9999;
+}
+.gitIcon {
+  margin-top: 10px;
+  float: right;
+  filter: invert(20%) sepia(13%) saturate(2612%) hue-rotate(179deg)
+    brightness(99%) contrast(93%);
+  /* cursor: pointer; */
+  z-index: 0;
+}
