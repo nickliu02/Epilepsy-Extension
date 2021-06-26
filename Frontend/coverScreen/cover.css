@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  background-color: lightsteelblue;
+  padding: 20px;
+  text-align: center;
+}
+
+.buttons {
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+  background-color: bisque;
+  width: 100%;
+}
+
+.buttons .yes {
+  background-color: #99afd7;
+  width: 197px;
+}
+
+.buttons .no {
+  background-color: #233c67;
+}
