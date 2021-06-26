@@ -7,10 +7,12 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/check',methods = ["POST"])
 def check():
-    data = request.get_data()
-    print(data)
-    #video = YouTube(data["url"])
-    #print(video.streams.filter(file_extension = "mp4").all())
+    data = json.loads(request.get_data().decode('UTF-8'))
+    print(data["url"])
+
+
+    video = YouTube(data["url"])
+    video.streams.filter(file_extension = "mp4").first().download()
 
     return jsonify({"ini":1})
 
@@ -19,3 +21,4 @@ def check():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
