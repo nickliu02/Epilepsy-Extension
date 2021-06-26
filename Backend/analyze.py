@@ -53,7 +53,48 @@ def get_avg_diff(hist, N):
     
     return avgP if abs(avgP) > abs(avgL) else avgL
 
+def get_triggers(diffs, rad=10, senstivity=12, density=0.4):
+    queue = [diffs[i] for i in range(rad)]
+    out = [0 for i in range(len(diffs))]
+
+    for i in range(rad, len(diffs)):
+        queue.pop(0)
+        queue.append(diffs[i])
+
+        count = 0
+        for val in queue:
+            if abs(val) > senstivity:
+                count += 1
+        if count / rad > density:
+            out[i] = 200
+
+    i, j = 0, 0
+    pairs = []
+
+    while i < len(out) - 1:
+        if out[i]:
+            count = 0
+            j = i
+            while j < len(out) and out[j]:
+                count += 1
+                j += 1
+                
+            if count < 15:
+                for k in range(i, j):
+                    out[k] = 0
+            else:
+                pairs.append([i, j])
+
+            i = j + 1
+        
+        else:
+            i += 1
+
+    return pairs
+
 def analyze(filename):
+    print(filename)
+
     fvs = FileVideoStream(filename).start()
     first = True
     prev_lux = None
@@ -91,11 +132,11 @@ def analyze(filename):
                 diffs.append(avg_diff)
 
                 accum = np.add(accum, diff)
-                avg_accum_diff = get_avg_diff(np.histogram(accum, bins=200), N, True)
+                avg_accum_diff = get_avg_diff(np.histogram(accum, bins=200), N)
                 accums.append(avg_accum_diff)
 
                 if avg_diff * prev_diff < 0:
-                    avg_accum_diff = get_avg_diff(np.histogram(accum, bins=200), N, True)
+                    avg_accum_diff = get_avg_diff(np.histogram(accum, bins=200), N)
 
                     
 
@@ -110,22 +151,37 @@ def analyze(filename):
                         #print(avg_accum_diff)
                 
                 prev_diff = avg_diff
-
                 
                 """
                 cv2.imshow("Frame", frame)
                 cv2.waitKey(1)
                 time.sleep(0.3)
                 """
-                
-                
+                 
             prev_lux = lux
     
     """
-    plt.plot([i+1 for i in range(len(diffs))], diffs, 'ro')
-    plt.plot([i+1 for i in range(len(diffs))], get_triggers(diffs), 'bo')
+    frames = [False for i in range(len(diffs))]
+    for pair in get_triggers(diffs):
+        for i in range(pair[0], pair[1]):
+            frames[i] = True
+
+    good_diffs = [diffs[i] for i in range(len(diffs)) if not frames[i]]
+    bad_diffs = [diffs[i] for i in range(len(diffs)) if frames[i]]
+
+    good_indexes = [i for i in range(len(frames)) if not frames[i]]
+    bad_indexes = [i for i in range(len(frames)) if frames[i]]
+
+    plt.plot(good_indexes, good_diffs, 'go')
+    plt.plot(bad_indexes, bad_diffs, 'ro')
     plt.axis([0, len(diffs), -200, 200])
-    plt.ylabel('avg diffs')
+    plt.ylabel('Average luminosity diff')
+    plt.xlabel('Frame #')
+
+    for pair in get_triggers(diffs):
+        plt.axvline(x=pair[0], color='k')
+        plt.axvline(x=pair[1], color='k')
+
     plt.show()
     """
 
@@ -150,50 +206,7 @@ def analyze(filename):
     """
     
     return get_triggers(diffs)
-
-def get_triggers(diffs, rad=10, senstivity=12, density=0.4):
-    queue = [diffs[i] for i in range(rad)]
-    out = [0 for i in range(len(diffs))]
-
-    for i in range(rad, len(diffs)):
-        queue.pop(0)
-        queue.append(diffs[i])
-
-        avg = sum(queue) / 10
-        count = 0
-        for val in queue:
-            if abs(val) > senstivity:
-                count += 1
-        if count / rad > density:
-            out[i] = 200
-
-    i, j = 0, 0
-    pairs = []
-
-    while i < len(out) - 1:
-        if out[i]:
-            count = 0
-            j = i
-            while j < len(out) and out[j]:
-                count += 1
-                j += 1
-                
-            if count < 15:
-                for k in range(i, j):
-                    out[k] = 0
-            else:
-                pairs.append([i, j])
-
-            i = j + 1
-        
-        else:
-            i += 1
-
-
-
-    return pairs
         
 
             
-analyze(filename)
 #pprint.pprint(analyze(filename))
