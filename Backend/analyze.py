@@ -7,7 +7,7 @@ import time
 import matplotlib.pyplot as plt
 
 
-filename = "Backend/pokemon.mp4"
+filename = "Backend/videos/pokemon.mp4"
 
 
 def Y_to_lux(Y):
@@ -125,12 +125,15 @@ def get_events(filename):
 
 
             prev_lux = lux
-    """
+    
     plt.plot([i+1 for i in range(len(diffs))], diffs, 'ro')
-    plt.axis([0, 500, -200, 200])
+    plt.plot([i+1 for i in range(len(diffs))], get_triggers(diffs), 'bo')
+    plt.axis([0, 320, -200, 200])
     plt.ylabel('avg diffs')
     plt.show()
-    """
+
+    
+    
 
     """
     plt.plot([i+1 for i in range(len(diffs))], accums, 'ro')
@@ -138,28 +141,60 @@ def get_events(filename):
     plt.ylabel('avg accums')
     plt.show()
     """
-
+    """
     rolling_avg = []
     for i in range(len(diffs) - 5):
-        rolling_avg.append(sum([abs(j) for j in diffs[i:i+5]])/5)
+        avg = sum([abs(j) for j in diffs[i:i+5]]) / 5
+        std = np.std(diffs[i:i+5])
+        
+        rolling_avg.append(avg)
 
     plt.plot([i+1 for i in range(len(diffs)-5)], rolling_avg, 'ro')
-    plt.axis([0, 320, 0, 100])
+    plt.axis([0, 320, -100, 100])
     plt.ylabel('avg diffs')
     plt.show()
-
+    """
+    
     return events
 
-def get_avg_and_sd(events, rad):
-    pass
+def get_triggers(diffs, fps=30, rad=10, senstivity=12, density=0.4):
+    queue = [diffs[i] for i in range(rad)]
+    out = [0 for i in range(len(diffs))]
 
-def get_triggers(events, fps=30, rad=5, senstivity=20):
-    queue = []
+    for i in range(rad, len(diffs)):
+        queue.pop(0)
+        queue.append(diffs[i])
 
-    for i in range(rad):
-        pass
+        avg = sum(queue) / 10
+        count = 0
+        for val in queue:
+            if abs(val) > senstivity:
+                count += 1
+        if count / rad > density:
+            out[i] = 200
+
+    i, j = 0, 0
+
+    while i < len(out) - 1:
+        if out[i]:
+            count = 0
+            j = i
+            while j < len(out) and out[j]:
+                count += 1
+                j += 1
+                
+            if count < 15:
+                for k in range(i, j):
+                    out[k] = 0
+            
+            i = j + 1
+        
+        else:
+            i += 1
+
+    return out
         
 
             
-
-pprint.pprint(get_events(filename))
+get_events(filename)
+#pprint.pprint(get_events(filename))
