@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="screenshots/icon.png" alt="icon" width="150px" /><br/>
+</p>
+
 # Epilepsy-Extension
 
 ## Inspiration
