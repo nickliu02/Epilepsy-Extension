@@ -91,10 +91,11 @@ def get_triggers(diffs, rad=10, senstivity=12, density=0.4):
             i += 1
 
     fps = 30
-
+    
     for pair in pairs:
         pair[0] //= 30
         pair[1] //= 30
+    
 
     return pairs
 
@@ -166,7 +167,7 @@ def analyze(filename):
                  
             prev_lux = lux
     
-    """
+    
     frames = [False for i in range(len(diffs))]
     for pair in get_triggers(diffs):
         for i in range(pair[0], pair[1]):
@@ -177,7 +178,7 @@ def analyze(filename):
 
     good_indexes = [i for i in range(len(frames)) if not frames[i]]
     bad_indexes = [i for i in range(len(frames)) if frames[i]]
-
+    """
     plt.plot(good_indexes, good_diffs, 'go')
     plt.plot(bad_indexes, bad_diffs, 'ro')
     plt.axis([0, len(diffs), -200, 200])
@@ -190,6 +191,7 @@ def analyze(filename):
 
     plt.show()
     """
+    
 
     """
     plt.plot([i+1 for i in range(len(diffs))], accums, 'ro')
