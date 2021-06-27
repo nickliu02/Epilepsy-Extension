@@ -6,9 +6,6 @@ document.addEventListener(
     document
       .getElementById("vidButton")
       .addEventListener("click", onClickVidButton, false);
-    /*   document
-      .getElementById("linkButton", onClickLinkButton, false)
-      .addEventListener("click"); */
     document
       .getElementById("myBtn")
       .addEventListener("click", continueScript, false);
@@ -44,4 +41,11 @@ window.onload = function () {
 };
 function continueScript() {
   newPopup("./coverScreen/cover.html");
+
+  /*   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var tab = tabs[0];
+    chrome.tabs.update(tab.id, {
+      url: chrome.extension.getURL("./coverScreen/cover.html"),
+    });
+  }); */
 }

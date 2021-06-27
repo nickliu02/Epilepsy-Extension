@@ -11,6 +11,8 @@ setInterval(function () {
     for (let i = 0; i < intervals.length; i++) {
       if (time >= intervals[i][0] && time <= intervals[i][1]) {
         goto = intervals[i][1];
+
+        continueScript();
         video.currentTime = goto
         video.pause();
         console.log("here");
@@ -43,21 +45,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   });
 });
 
-//FOLLOWING CODE USED FOR PLAY AND PAUSE
+function newPopup(url) {
+  popupWindow = window.open(
+    url,
+    "popUpWindow",
+    "height=800,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"
+  );
+}
 
-/* chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.message === "toggle_video_state") {
-    var video = document.getElementsByTagName("video")[0];
-    if (video) {
-      if (video.paused) {
-        video.play();
-        sendResponse({ paused: false, tabId: request.tabId });
-      } else {
-        video.pause();
-        sendResponse({ paused: true, tabId: request.tabId });
-      }
-    } else {
-      sendResponse({ error: "No video object found" });
-    }
-  }
-}); */
