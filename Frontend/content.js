@@ -1,5 +1,19 @@
 //alert("working!");
 
+function newPopup(url) {
+  popupWindow = window.open(
+    url,
+    "popUpWindow",
+    "height=800,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes"
+  );
+}
+
+function continueScript() {
+  newPopup(chrome.extension.getURL("./coverScreen/cover.html")
+  );
+}
+
+
 let intervals = [];
 let goto = 0;
 
@@ -9,18 +23,20 @@ setInterval(function () {
   if (video) {
     let time = video.currentTime;
     for (let i = 0; i < intervals.length; i++) {
-      if (time >= intervals[i][0] && time <= intervals[i][1]) {
+      if (time >= intervals[i][0] && time < intervals[i][1]) {
         goto = intervals[i][1];
-        video.seekTo(goto);
-        video.pause();
+        intervals.shift();
+        //continueScript()
+        video.currentTime = goto
         console.log("here");
+        break;
       }
     }
   }
 }, 1000);
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  alert(window.location.toString());
+  //alert(window.location.toString());
 
   let data = { url: window.location.toString() };
   if (request.message) {
