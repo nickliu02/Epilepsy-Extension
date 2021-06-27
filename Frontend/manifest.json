@@ -2,6 +2,15 @@
   "name": "Epilepsy Extension",
   "version": "1.0",
   "manifest_version": 2,
+  "icons": {
+    "16": "./assets/icon16.png",
+    "24": "./assets/icon24.png",
+    "32" : "./assets/icon32.png",
+    "48": "./assets/icon48.png",
+    "128": "./assets/icon128.png",
+    "256": "./assets/icon256.png"
+  },
+  "description": "Prevent epileptic seizures by skipping parts of videos with flashing lights.",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -14,6 +23,15 @@
   ],
   "browser_action": {
       "default_popup" : "popup.html",
-      "default_title": "Epilepsy Extension"
+      "default_title": "Epilepsy Extension",
+      "default_icon": {
+        "16": "./assets/icon16.png",
+        "24": "./assets/icon24.png",
+        "32" : "./assets/icon32.png",
+        "48": "./assets/icon48.png",
+        "128": "./assets/icon128.png"
+      }
   }
+  
+ 
 }
