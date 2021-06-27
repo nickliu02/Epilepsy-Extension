@@ -28,23 +28,10 @@ document.addEventListener(
         );
       });
     }
-    function onClickButton() {
+    /*   function onClickButton() {
       var url = chrome.extension.getURL("./coverScreen/cover.html");
       window.open(url);
-      /* chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        var tab = tabs[0];
-        chrome.tabs.update(tab.id, {
-          url: chrome.extension.getURL("./coverScreen/cover.html"),
-        });
-      chrome.tabs.sendMessage(tabs[0].id, {
-          createDiv: {
-            width: "1000px",
-            height: "1000px",
-            innerHTML: "HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
-          },
-        }); 
-      });*/
-    }
+    } */
   },
   false
 );
