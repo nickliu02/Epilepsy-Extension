@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="screenshots/icon.png" alt="icon" width="300px" /><br/>
+  <img src="screenshots/icon.png" alt="icon" width="250px" /><br/>
 </p>
 
 # Epilepsy-Extension
