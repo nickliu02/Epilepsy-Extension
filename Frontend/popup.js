@@ -16,6 +16,8 @@ document.addEventListener(
     function onClickVidButton() {
       chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, "");
+
+        //document.getElementsByName("video")[0].onpause();
       });
     }
     function onClickLinkButton() {
@@ -25,6 +27,23 @@ document.addEventListener(
           document.getElementById("link").value
         );
       });
+    }
+    function onClickButton() {
+      var url = chrome.extension.getURL("./coverScreen/cover.html");
+      window.open(url);
+      /* chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        var tab = tabs[0];
+        chrome.tabs.update(tab.id, {
+          url: chrome.extension.getURL("./coverScreen/cover.html"),
+        });
+      chrome.tabs.sendMessage(tabs[0].id, {
+          createDiv: {
+            width: "1000px",
+            height: "1000px",
+            innerHTML: "HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+          },
+        }); 
+      });*/
     }
   },
   false
@@ -44,4 +63,20 @@ window.onload = function () {
 };
 function continueScript() {
   newPopup("./coverScreen/cover.html");
+  /*   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var tab = tabs[0];
+    chrome.tabs.update(tab.id, {
+      url: chrome.extension.getURL("./coverScreen/cover.html"),
+    });
+  }); */
 }
+
+//CODE USED FOR PLAY AND PAUSE
+/* chrome.tabs.addListener(function (tabId, changeInfo, tab) {
+  var re = /www\.youtube\.com/;
+  if (re.test(tab.url) && changeInfo.title) {
+    document.getElementById("title" + tabId).textContent = changeInfo.title;
+    document.getElementById("url" + tabId).textContent = tab.url;
+  }
+});
+ */
