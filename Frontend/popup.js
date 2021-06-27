@@ -6,6 +6,9 @@ document.addEventListener(
     document
       .getElementById("vidButton")
       .addEventListener("click", onClickVidButton, false);
+    /*   document
+      .getElementById("linkButton", onClickLinkButton, false)
+      .addEventListener("click"); */
     document
       .getElementById("myBtn")
       .addEventListener("click", continueScript, false);
