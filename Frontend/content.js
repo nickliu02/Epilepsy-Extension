@@ -11,7 +11,7 @@ setInterval(function () {
     for (let i = 0; i < intervals.length; i++) {
       if (time >= intervals[i][0] && time <= intervals[i][1]) {
         goto = intervals[i][1];
-        video.currentTime = goto
+        video.seekTo(goto);
         video.pause();
         console.log("here");
       }
