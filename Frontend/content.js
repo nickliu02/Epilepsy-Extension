@@ -1,6 +1,25 @@
 //alert("working!");
 
-let intervals = {}
+let intervals = []
+let goto = 0
+
+setInterval(function(){ 
+  console.log(intervals)
+  var video = document.getElementsByTagName('video')[0];
+  if (video) {
+    let time = video.currentTime;
+    for (let i = 0; i < intervals.length; i++) {
+      if (time >= intervals[i][0] && time <= intervals[i][1]) {
+        goto = intervals[i][1];
+        video.seekTo(goto);
+        video.pause();
+        console.log("here")
+
+      }
+    }
+  }
+}, 1000);
+
 
 chrome.runtime.onMessage.addListener(function (request) {
     alert(window.location.toString());
@@ -21,12 +40,14 @@ chrome.runtime.onMessage.addListener(function (request) {
         body:JSON.stringify(data)
     }).then(res => {
         res.json().then(json => {
-            console.log(json.body);
-            intervals = json.body.intervals
+            console.log(json);
+            intervals = json.intervals
         });
     })
 
 });
+
+
 
 //FOLLOWING CODE USED FOR PLAY AND PAUSE
 
