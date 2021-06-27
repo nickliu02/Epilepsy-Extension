@@ -1,4 +1,7 @@
 //alert("working!");
+
+let intervals = {}
+
 chrome.runtime.onMessage.addListener(function (request) {
     alert(window.location.toString());
 
@@ -18,10 +21,10 @@ chrome.runtime.onMessage.addListener(function (request) {
         body:JSON.stringify(data)
     }).then(res => {
         res.json().then(json => {
-            console.log(json);
+            console.log(json.body);
+            intervals = json.body.intervals
         });
     })
-
 
 });
 
