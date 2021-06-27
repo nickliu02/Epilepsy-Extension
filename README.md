@@ -2,7 +2,7 @@
   <img src="screenshots/icon.png" alt="icon" width="250px" /><br/>
 </p>
 
-# Epilepsy-Extension
+# Flash Player
 
 ## Inspiration
 Epilepsy is a chronic non-communicable disease of the brain that affects people of all ages. In 2019, the World Health Organization (WHO) reported that approximately 50 million people worldwide have epilepsy. This makes it the most common neurological disease globally, and unfortunately, there is no cure.
