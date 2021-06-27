@@ -90,6 +90,12 @@ def get_triggers(diffs, rad=10, senstivity=12, density=0.4):
         else:
             i += 1
 
+    fps = 30
+
+    for pair in pairs:
+        pair[0] //= 30
+        pair[1] //= 30
+
     return pairs
 
 def analyze(filename):
