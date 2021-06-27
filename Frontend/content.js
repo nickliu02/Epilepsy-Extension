@@ -19,7 +19,7 @@ setInterval(function () {
   }
 }, 1000);
 
-chrome.runtime.onMessage.addListener(function (request) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   alert(window.location.toString());
 
   let data = { url: window.location.toString() };

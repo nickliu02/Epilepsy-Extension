@@ -27,13 +27,15 @@ window.onload = function () {
   yes.addEventListener("click", () => {
     // Get active tab.
     chrome.tabs.query({ active: true }, (activeTabs) => {
-      modal.style.display = "none";
+      //modal.style.display = "none";
+      window.close();
     });
   });
   span.addEventListener("click", () => {
     // Get active tab.
     chrome.tabs.query({ active: true }, (activeTabs) => {
-      modal.style.display = "none";
+      //modal.style.display = "none";
+      window.close();
     });
   });
 };
