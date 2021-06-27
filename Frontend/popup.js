@@ -6,9 +6,6 @@ document.addEventListener(
     document
       .getElementById("vidButton")
       .addEventListener("click", onClickVidButton, false);
-    /*   document
-      .getElementById("linkButton", onClickLinkButton, false)
-      .addEventListener("click"); */
     document
       .getElementById("myBtn")
       .addEventListener("click", continueScript, false);
@@ -49,6 +46,7 @@ window.onload = function () {
   link.addEventListener("click", continueScript);
 };
 function continueScript() {
+<<<<<<< Updated upstream
   newPopup("./coverScreen/cover.html");
   /*   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var tab = tabs[0];
@@ -56,6 +54,14 @@ function continueScript() {
       url: chrome.extension.getURL("./coverScreen/cover.html"),
     });
   }); */
+=======
+  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      newPopup("./coverScreen/cover.html")
+    );
+  });
+>>>>>>> Stashed changes
 }
 
 //CODE USED FOR PLAY AND PAUSE
