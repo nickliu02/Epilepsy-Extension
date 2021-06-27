@@ -6,7 +6,12 @@ document.addEventListener(
     document
       .getElementById("vidButton")
       .addEventListener("click", onClickVidButton, false);
-    document.getElementById("linkButton").addEventListener("click",)
+    /*   document
+      .getElementById("linkButton", onClickLinkButton, false)
+      .addEventListener("click"); */
+    document
+      .getElementById("myBtn")
+      .addEventListener("click", onClickButton, false);
 
     function onClickVidButton() {
       chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
@@ -15,14 +20,25 @@ document.addEventListener(
         //document.getElementsByName("video")[0].onpause();
       });
     }
-    function onClickLinkButton(){
-        chrome.tabs.query({currentWindow:true,active:true},function (tabs){
-            chrome.tabs.sendMessage(tabs[0].id,document.getElementById("link").value);
-        })
+    function onClickLinkButton() {
+      chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          document.getElementById("link").value
+        );
+      });
+    }
+    function onClickButton() {
+      var url = chrome.extension.getURL("./coverScreen/cover.html");
+      window.open(url);
     }
   },
   false
 );
+
+function continueScript() {
+  newPopup("./coverScreen/cover.html");
+}
 
 //CODE USED FOR PLAY AND PAUSE
 /* chrome.tabs.addListener(function (tabId, changeInfo, tab) {

@@ -124,3 +124,113 @@ inputField:focus {
   /* cursor: pointer; */
   z-index: 0;
 }
+
+/* --------------------------- */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 60%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* actual content begins here */
+.pauseIcon {
+  filter: invert(6%) sepia(29%) saturate(5283%) hue-rotate(209deg)
+    brightness(102%) contrast(91%);
+}
+.content {
+  background-color: transparent;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.content .warning {
+  font-size: 26px;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.content .proceed {
+  font-size: 26px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: #5d749b;
+}
+
+.buttons {
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: box-shadow 0.3s;
+}
+.buttons :hover {
+  opacity: 0.9;
+  cursor: pointer;
+  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
+}
+
+.buttons .yes {
+  background-color: #99afd7;
+  width: 197px;
+  height: 50px;
+  margin-right: 30px;
+  border-radius: 8px;
+  border-color: transparent;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: white;
+}
+
+.buttons .no {
+  background-color: #233c67;
+  width: 197px;
+  height: 50px;
+  margin-left: 30px;
+  border-radius: 8px;
+  border-color: transparent;
+  font-size: 24px;
+  font-family: "Inter";
+  font-weight: 400;
+  color: white;
+}

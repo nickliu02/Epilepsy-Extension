@@ -6,7 +6,8 @@
   background-color: rgba(249, 249, 249, 0.9);
 }
 .modal {
-  display: none;
+  /* display: none; */
+  display: initial;
   position: fixed;
   z-index: 1;
   padding-top: 100px;

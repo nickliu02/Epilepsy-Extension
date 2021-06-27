@@ -1,28 +1,25 @@
 //alert("working!");
 chrome.runtime.onMessage.addListener(function (request) {
-    alert(window.location.toString());
+  alert(window.location.toString());
 
-    let data = {"url": window.location.toString()};
-    if (request.message){
-        data = {"url":request.message}
-        chrome.tabs.create({url:request.message})
+  let data = { url: window.location.toString() };
+  if (request.message) {
+    data = { url: request.message };
+    chrome.tabs.create({ url: request.message });
+  }
 
-    }
-
-    fetch("http://127.0.0.1:5000/check",{
-        method:"POST",
-        mode:"cors",
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(data)
-    }).then(res => {
-        res.json().then(json => {
-            console.log(json);
-        });
-    })
-
-
+  fetch("http://127.0.0.1:5000/check", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => {
+    res.json().then((json) => {
+      console.log(json);
+    });
+  });
 });
 
 //FOLLOWING CODE USED FOR PLAY AND PAUSE
