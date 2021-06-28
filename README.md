@@ -15,7 +15,7 @@ Upon opening Flash Player on YouTube, users can scan videos for triggers of seiz
 ### How we built it
 The chrome extension was built using Javascript, HTML, and CSS. The backend used a Flask server with a MongoDB database to interact with the Chrome extension. OpenCV and Numpy were used for the video analysis to determine what parts of the video have triggers.
 
-## What's next for Flash Player
+### What's next for Flash Player
 - Implement red saturation analysis in addition to luminosity 
 - Increasing performance times to reduce time required 
 - Improving accuracy of the algorithm by applying machine learning techniques
