@@ -1,15 +1,15 @@
 body {
   width: 288px;
   height: 104px;
+  margin: 0;
+  /* background-color: aquamarine; */
   background-color: #f9f9f9;
 }
 object {
   background-color: grey;
 }
 .firstButton {
-  margin-top: 25px;
-  background-color: transparent;
-  padding: 10px;
+  margin-top: 40px;
 }
 .vidButton {
   background-color: #6888be;
@@ -25,82 +25,39 @@ object {
   transition: box-shadow 0.3s;
 }
 .vidButton:hover {
+  background-color: #93adda;
   opacity: 0.9;
   cursor: pointer;
-  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
+  /* box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2); */
 }
 
-.question {
-  background-color: transparent;
-  margin-left: 28px;
-  margin-bottom: 8px;
-  font-family: "Inter";
-  font-weight: 500;
-  font-size: 14px;
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 25px;
+  /* background-color: lightblue; */
 }
-
-.formClass {
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  background-color: transparent;
-}
-.inputField {
-  height: 35px;
-  width: 206px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 5px;
-  border-color: transparent;
-  background-color: #e8e8e8;
-  outline: thistle;
-}
-
-inputField:focus {
-  outline: none;
-}
-.secondButton {
-  background-color: transparent;
-  margin-top: -8px;
-  margin-bottom: 40px;
-}
-
-.linkButton {
-  background-color: #99afd7;
-  margin: 0 auto;
-  display: block;
-  width: 212px;
-  height: 35px;
-  border-color: transparent;
-  border-radius: 5px;
-  color: white;
-  font-family: "Inter";
-  font-weight: 400;
-  transition: box-shadow 0.3s;
-}
-.linkButton:hover {
-  opacity: 0.9;
-  cursor: pointer;
-  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
-}
-
-.reportSection {
-  display: inline-block;
-  background-color: transparent;
+.bottomLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  /* background-color: rgb(230, 217, 173); */
 }
 
 .issueIcon {
-  margin-top: 10px;
-  float: left;
+  margin-top: 11px;
+  /* float: left; */
   filter: invert(57%) sepia(0%) saturate(474%) hue-rotate(139deg)
     brightness(98%) contrast(91%);
 }
 .issueIcon:hover {
   cursor: pointer;
 }
+
 .reportText {
-  padding-left: 10px;
   float: right;
   font-family: "Inter";
   font-weight: 400;
@@ -110,131 +67,18 @@ inputField:focus {
   cursor: pointer;
 }
 
-.footer {
-  width: 100%;
-  display: inline-block;
-  background-color: transparent;
-  z-index: 9999;
+.bottomRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+  /* background-color: rgb(161, 207, 176); */
 }
+
 .gitIcon {
-  margin-top: 10px;
-  float: right;
+  margin-top: 11px;
+  margin-right: 10px;
   filter: invert(20%) sepia(13%) saturate(2612%) hue-rotate(179deg)
     brightness(99%) contrast(93%);
   /* cursor: pointer; */
-  z-index: 0;
-}
-
-/* --------------------------- */
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  height: 60%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* actual content begins here */
-.pauseIcon {
-  filter: invert(6%) sepia(29%) saturate(5283%) hue-rotate(209deg)
-    brightness(102%) contrast(91%);
-}
-.content {
-  background-color: transparent;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.content .warning {
-  font-size: 20px;
-  font-family: "Inter";
-  font-weight: 500;
-}
-
-.content .proceed {
-  font-size: 16px;
-  font-family: "Inter";
-  font-weight: 400;
-  color: #5d749b;
-}
-
-.buttons {
-  padding: 20px;
-  display: inline-block;
-  text-align: center;
-  background-color: transparent;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  transition: box-shadow 0.3s;
-}
-.buttons :hover {
-  opacity: 0.9;
-  cursor: pointer;
-  box-shadow: 0 11px 11px rgba(33, 33, 33, 0.2);
-}
-
-.buttons .yes {
-  background-color: #99afd7;
-  width: 100px;
-  height: 25px;
-  margin-right: 15px;
-  border-radius: 8px;
-  border-color: transparent;
-  font-size: 12px;
-  font-family: "Inter";
-  font-weight: 400;
-  color: white;
-}
-
-.buttons .no {
-  background-color: #233c67;
-  width: 100px;
-  height: 25px;
-  margin-left: 15px;
-  border-radius: 8px;
-  border-color: transparent;
-  font-size: 12px;
-  font-family: "Inter";
-  font-weight: 400;
-  color: white;
-}
-
-.new {
-  margin-top: 35px;
-  background-color: transparent;
-  height: 100%;
 }

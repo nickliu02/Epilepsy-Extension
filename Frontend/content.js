@@ -1,5 +1,3 @@
-//alert("working!");
-
 function newPopup(url) {
   popupWindow = window.open(
     url,
@@ -9,15 +7,17 @@ function newPopup(url) {
 }
 
 function continueScript() {
-  newPopup(chrome.extension.getURL("./coverScreen/cover.html")
-  );
+  newPopup(chrome.extension.getURL("./coverScreen/cover.html"));
 }
 
+function onClickButton() {
+  window.open(chrome.runtime.getURL("/coverScreen/cover.html"));
+}
 
 let intervals = [];
 let goto = 0;
 
-setInterval(function () {
+setInterval(function (request) {
   console.log(intervals);
   var video = document.getElementsByTagName("video")[0];
   if (video) {
@@ -26,14 +26,39 @@ setInterval(function () {
       if (time >= intervals[i][0] && time < intervals[i][1]) {
         goto = intervals[i][1];
         intervals.shift();
-        //continueScript()
-        video.currentTime = goto
+
+        //continueScript();
+        video.currentTime = goto;
         console.log("here");
         break;
       }
     }
   }
 }, 1000);
+
+/* 
+chrome.browserAction.onClicked.addListener(function (tab) {
+  chrome.windows.create(
+    {
+      url: chrome.runtime.getURL("./coverScreen/cover.html"),
+      type: "popup",
+      incognito: split,
+    },
+    function (tab) {
+      // Tab opened.
+    }
+  );
+}); 
+*/
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  console.log("here2");
+  if (request.message === "popup") {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL("./coverScreen/cover.html"),
+    });
+  }
+});
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   //alert(window.location.toString());
@@ -42,6 +67,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message) {
     data = { url: request.message };
     chrome.tabs.create({ url: request.message });
+  }
+
+  if (request.message === "popup") {
+    console.log("here2");
+    chrome.tabs.create({
+      url: chrome.runtime.getURL("./coverScreen/cover.html"),
+    });
   }
 
   fetch("http://127.0.0.1:5000/check", {

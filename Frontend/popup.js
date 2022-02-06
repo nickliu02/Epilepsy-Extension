@@ -9,9 +9,9 @@ document.addEventListener(
     /*   document
       .getElementById("linkButton", onClickLinkButton, false)
       .addEventListener("click"); */
-    document
+    /*  document
       .getElementById("myBtn")
-      .addEventListener("click", continueScript, false);
+      .addEventListener("click", continueScript, false); */
 
     function onClickVidButton() {
       chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
@@ -28,6 +28,10 @@ document.addEventListener(
         );
       });
     }
+
+    chrome.runtime.sendMessage({ message: "popup" }, function (response) {
+      //
+    });
     /*   function onClickButton() {
       var url = chrome.extension.getURL("./coverScreen/cover.html");
       window.open(url);
